@@ -38,6 +38,23 @@ class AthletesController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'firstname' => 'required',
+            'surname' => 'required',
+            'gender' => 'required',
+            'address_1' => 'required',
+            'address_2' => 'required',
+            'postcode' => 'required',
+            'parent_1_firstname' => 'required',
+            'parent_1_surname' => 'required',
+            'parent_1_email_address' => 'required',
+            'telephone_number_1' => 'required',
+            'emergency_contact_firstname' => 'required',
+            'emergency_contact_surname' => 'required',
+            'emergency_contact_relationship' => 'required',
+            'membership_type' => 'required'
+]);
+        
         $input = $request->all();
 
         Athlete::create($input);
