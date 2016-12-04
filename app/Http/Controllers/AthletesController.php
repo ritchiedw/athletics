@@ -38,7 +38,11 @@ class AthletesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+        Athlete::create($input);
+
+        return redirect()->back();
     }
 
     /**
