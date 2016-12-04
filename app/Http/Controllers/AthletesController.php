@@ -5,15 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Athlete;
 
-class AthletesController extends Controller
-{
+class AthletesController extends Controller {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index() {
         //return view('athletes.index');
         $athletes = Athlete::all();
 
@@ -25,8 +24,7 @@ class AthletesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create() {
         return view('athletes.create');
     }
 
@@ -36,8 +34,7 @@ class AthletesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         $this->validate($request, [
             'firstname' => 'required',
             'surname' => 'required',
@@ -54,14 +51,14 @@ class AthletesController extends Controller
             'emergency_contact_surname' => 'required',
             'emergency_contact_relationship' => 'required',
             'membership_type' => 'required'
-]);
-        
+        ]);
+
         $input = $request->all();
 
         Athlete::create($input);
 
         Session::flash('flash_message', 'Athlete successfully added!');
-        
+
         return redirect()->back();
     }
 
@@ -71,8 +68,7 @@ class AthletesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         //
     }
 
@@ -82,9 +78,10 @@ class AthletesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit($id) {
+        
+        $athlete = Athlete::findOrFail($id);
+        return view('athletes.edit')->withAthlete($athlete);
     }
 
     /**
@@ -94,8 +91,7 @@ class AthletesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id) {
         //
     }
 
@@ -105,8 +101,8 @@ class AthletesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
         //
     }
+
 }
