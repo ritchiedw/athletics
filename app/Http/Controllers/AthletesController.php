@@ -42,6 +42,7 @@ class AthletesController extends Controller
             'firstname' => 'required',
             'surname' => 'required',
             'gender' => 'required',
+            'dob' => 'required',
             'address_1' => 'required',
             'address_2' => 'required',
             'postcode' => 'required',
@@ -59,6 +60,8 @@ class AthletesController extends Controller
 
         Athlete::create($input);
 
+        Session::flash('flash_message', 'Athlete successfully added!');
+        
         return redirect()->back();
     }
 
