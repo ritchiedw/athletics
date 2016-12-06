@@ -13,7 +13,7 @@
     'route' => 'athletes.store'
 ]) !!}
 
-@include('partials.forms.athlete')
+@include('forms.athlete')
 
 {!! Form::submit('Create New Athlete', ['class' => 'btn btn-primary']) !!}
 

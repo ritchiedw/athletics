@@ -10,7 +10,7 @@
 
 <div class="form-group">
     {!! Form::label('gender', 'Athlete Gender:', ['class' => 'control-label']) !!}
-    {!! Form::select('gender', [0 => 'Female', 1 => 'Male'], ['class' => 'form-control']) !!}
+    {!! Form::select('gender', ['Female' => 'Female', 'Male' => 'Male'], ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
@@ -110,33 +110,33 @@
 
 <div class="form-group">
     {!! Form::label('membership_type', 'Membership Type:', ['class' => 'control-label']) !!}
-    {!! Form::select('membership_type', [0 => 'Junior', 1 => 'Ordinary', 2 => 'Family'], ['class' => 'form-control']) !!}
+    {!! Form::select('membership_type', ['Junior' => 'Junior', 'Ordinary' => 'Ordinary', 'Family' => 'Family'], ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
     {!! Form::label('fees_paid', 'Fees Paid:', ['class' => 'control-label']) !!}
-    {!! Form::checkbox('fees_paid', false, ['class' => 'form-control']) !!}
+    {!! Form::checkbox('fees_paid', true, null) !!}
 </div>
 
 <div class="form-group">
     {!! Form::label('photo_consent', 'Photo Consent:', ['class' => 'control-label']) !!}
-    {!! Form::checkbox('photo_consent', 1, ['class' => 'form-control']) !!}
+    {!! Form::checkbox('photo_consent', "true", null) !!}
 </div>
 
 <div class="form-group">
     {!! Form::label('medical_consent_1', 'Medical Consent 1:', ['class' => 'control-label']) !!}
-    {!! Form::checkbox('medical_consent_1', 1, ['class' => 'form-control']) !!}
+    {!! Form::checkbox('medical_consent_1', true, null) !!}
     
 </div>
 
 <div class="form-group">
     {!! Form::label('medical_consent_2', 'Medical Consent 2:', ['class' => 'control-label']) !!}
-    {!! Form::checkbox('medical_consent_2', 1, ['class' => 'form-control']) !!}
+    {!! Form::checkbox('medical_consent_2', "true", null) !!}
 </div>
 
 <div class="form-group">
     {!! Form::label('signed', 'Signed:', ['class' => 'control-label']) !!}
-    {!! Form::checkbox('signed', 1, ['class' => 'form-control']) !!}
+    {!! Form::checkbox('signed', "true", null) !!}
 </div>
 
 <div class="form-group">

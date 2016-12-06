@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Athlete;
+use Session;
 
 class AthletesController extends Controller {
 
@@ -69,7 +70,9 @@ class AthletesController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
-        //
+        
+        $athlete = Athlete::findOrFail($id);
+        return view('athletes.show')->withAthlete($athlete);
     }
 
     /**
@@ -92,7 +95,34 @@ class AthletesController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
-        //
+        
+        
+        
+        $this->validate($request, [
+            'firstname' => 'required',
+            'surname' => 'required',
+            'gender' => 'required',
+            'dob' => 'required',
+            'address_1' => 'required',
+            'address_2' => 'required',
+            'postcode' => 'required',
+            'parent_1_firstname' => 'required',
+            'parent_1_surname' => 'required',
+            'parent_1_email_address' => 'required',
+            'telephone_number_1' => 'required',
+            'emergency_contact_firstname' => 'required',
+            'emergency_contact_surname' => 'required',
+            'emergency_contact_relationship' => 'required',
+            'membership_type' => 'required'
+        ]);
+
+        $input = $request->all();
+
+        Athlete::create($input);
+
+        Session::flash('flash_message', 'Athlete successfully added!');
+
+        return redirect()->back();
     }
 
     /**
