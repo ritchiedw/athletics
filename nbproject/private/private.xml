@@ -5,6 +5,7 @@
         <group>
             <file>file:/C:/wamp64/www/Laravel/athletics/resources/views/athletes/edit.blade.php</file>
             <file>file:/C:/wamp64/www/Laravel/athletics/resources/views/athletes/create.blade.php</file>
+            <file>file:/C:/wamp64/www/Laravel/athletics/resources/views/forms/athlete.blade.php</file>
             <file>file:/C:/wamp64/www/Laravel/athletics/resources/views/athletes/index.blade.php</file>
             <file>file:/C:/wamp64/www/Laravel/athletics/app/Http/Controllers/AthletesController.php</file>
             <file>file:/C:/wamp64/www/Laravel/athletics/resources/views/athletes/show.blade.php</file>

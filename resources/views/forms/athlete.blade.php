@@ -18,31 +18,35 @@
     {!! Form::date('dob', null, ['class' => 'form-control']) !!}
 </div>
 
-<div class="form-group">
-    {!! Form::label('address_1', 'Athlete Address 1:', ['class' => 'control-label']) !!}
-    {!! Form::text('address_1', null, ['class' => 'form-control']) !!}
-</div>
+<div class="panel panel-default">
+    <div class="panel-heading">Address</div>
+    <div class="panel-body">
+        <div class="form-group">
+            {!! Form::label('address_1', 'Athlete Address 1:', ['class' => 'control-label']) !!}
+            {!! Form::text('address_1', null, ['class' => 'form-control']) !!}
+        </div>
 
-<div class="form-group">
-    {!! Form::label('address_2', 'Athlete Address 2:', ['class' => 'control-label']) !!}
-    {!! Form::text('address_2', null, ['class' => 'form-control']) !!}
-</div>
+        <div class="form-group">
+            {!! Form::label('address_2', 'Athlete Address 2:', ['class' => 'control-label']) !!}
+            {!! Form::text('address_2', null, ['class' => 'form-control']) !!}
+        </div>
 
-<div class="form-group">
-    {!! Form::label('address_3', 'Athlete Address 3:', ['class' => 'control-label']) !!}
-    {!! Form::text('address_3', null, ['class' => 'form-control']) !!}
-</div>
+        <div class="form-group">
+            {!! Form::label('address_3', 'Athlete Address 3:', ['class' => 'control-label']) !!}
+            {!! Form::text('address_3', null, ['class' => 'form-control']) !!}
+        </div>
 
-<div class="form-group">
-    {!! Form::label('address_4', 'Athlete Address 4:', ['class' => 'control-label']) !!}
-    {!! Form::text('address_4', null, ['class' => 'form-control']) !!}
-</div>
+        <div class="form-group">
+            {!! Form::label('address_4', 'Athlete Address 4:', ['class' => 'control-label']) !!}
+            {!! Form::text('address_4', null, ['class' => 'form-control']) !!}
+        </div>
 
-<div class="form-group">
-    {!! Form::label('postcode', 'Athlete Postcode:', ['class' => 'control-label']) !!}
-    {!! Form::text('postcode', null, ['class' => 'form-control']) !!}
+        <div class="form-group">
+            {!! Form::label('postcode', 'Athlete Postcode:', ['class' => 'control-label']) !!}
+            {!! Form::text('postcode', null, ['class' => 'form-control']) !!}
+        </div>
+    </div>
 </div>
-
 <div class="form-group">
     {!! Form::label('parent_1_firstname', 'First Parent Firstname:', ['class' => 'control-label']) !!}
     {!! Form::text('parent_1_firstname', null, ['class' => 'form-control']) !!}
@@ -126,7 +130,7 @@
 <div class="form-group">
     {!! Form::label('medical_consent_1', 'Medical Consent 1:', ['class' => 'control-label']) !!}
     {!! Form::checkbox('medical_consent_1', true, null) !!}
-    
+
 </div>
 
 <div class="form-group">
