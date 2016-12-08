@@ -2,20 +2,26 @@
 
 @section('content')
 
-<h1>Edit Task - Task Name </h1>
-<p class="lead">Edit this task below. <a href="{{ route('athletes.index') }}">Go back to all tasks.</a></p>
-<hr>
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">&nbsp;</div>
+        <div class="col-md-8">
+            <h1>Edit Athlete {{ $athlete->firstname }} {{ $athlete->surname }}</h1>
+            <p class="lead">Edit this athlete below. <a href="{{ route('athletes.index') }}">Go back to all athletes.</a></p>
+        </div>
+    </div>
+</div>
 
-{!! Form::model($athlete, [
-    'method' => 'PATCH',
-    'route' => ['athletes.update', $athlete->id]
-]) !!}
+        {!! Form::model($athlete, [
+        'method' => 'PATCH',
+        'route' => ['athletes.update', $athlete->id]
+        ]) !!}
 
-@include('forms.athlete')
+        @include('forms.athlete')
 
-{!! Form::submit('Update Task', ['class' => 'btn btn-primary']) !!}
+        {!! Form::submit('Update Task', ['class' => 'btn btn-primary']) !!}
 
-{!! Form::close() !!}
+        {!! Form::close() !!}
 
 
-@stop
+        @stop
