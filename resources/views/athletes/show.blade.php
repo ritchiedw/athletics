@@ -5,6 +5,7 @@
 <div class="row">
     <div class="col-md-2">&nbsp;</div>
     <div class="col-md-6"><h1>{{ $athlete->firstname }} {{ $athlete->surname }} <small>{{ $athlete->dob }}</small></h1></div>
+    <div class="col-md-2"><a href="{{ route('athletes.index') }}" class="btn btn-info">Back to all athletes</a></div>
 </div>
 
 <div class="container">
@@ -70,17 +71,20 @@
                                     </div>
                                     <div class="panel-body">
                                         <div class="row">
-                                            <div class="col-md-4">Firstname:</div>
-                                            <div class="col-md-2">{{ $athlete->parent_1_firstname }}</div>
-                                            <div class="col-md-4">Surname:</div>
-                                            <div class="col-md-2">{{ $athlete->parent_1_surname }}</div>
+                                            <div class="col-md-3">Firstname:</div>
+                                            <div class="col-md-3">{{ $athlete->parent_1_firstname }}</div>
                                         </div>
-
                                         <div class="row">
-                                            <div class="col-md-4">Email Address:</div>
-                                            <div class="col-md-2">{{ $athlete->parent_1_email_address }}</div>
-                                            <div class="col-md-4">Tel:</div>
-                                            <div class="col-md-2">{{ $athlete->telephone_number_1 }}</div>
+                                            <div class="col-md-3">Surname:</div>
+                                            <div class="col-md-3">{{ $athlete->parent_1_surname }}</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">Email:</div>
+                                            <div class="col-md-3">{{ $athlete->parent_1_email_address }}</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">Tel:</div>
+                                            <div class="col-md-3">{{ $athlete->telephone_number_1 }}</div>
                                         </div>
                                     </div>
 
@@ -93,18 +97,24 @@
                                     </div>
                                     <div class="panel-body">
                                         <div class="row">
-                                            <div class="col-md-4">Firstname:</div>
-                                            <div class="col-md-2">{{ $athlete->parent_2_firstname }}</div>
-                                            <div class="col-md-4">Surname:</div>
-                                            <div class="col-md-2">{{ $athlete->parent_2_surname }}</div>
+                                            <div class="col-md-3">Firstname:</div>
+                                            <div class="col-md-3">{{ $athlete->parent_2_firstname }}</div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-4">Email Address:</div>
-                                            <div class="col-md-2">{{ $athlete->parent_2_email_address }}</div>
-                                            <div class="col-md-4">Tel:</div>
-                                            <div class="col-md-2">{{ $athlete->telephone_number_2 }}</div>
+                                            <div class="col-md-3">Surname:</div>
+                                            <div class="col-md-3">{{ $athlete->parent_2_surname }}</div>
                                         </div>
-                                    </div>    
+                                        <div class="row">
+                                            <div class="col-md-3">Email:</div>
+                                            <div class="col-md-3">{{ $athlete->parent_2_email_address }}</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">Tel:</div>
+                                            <div class="col-md-3">{{ $athlete->telephone_number_2 }}</div>
+                                        </div>
+                                    </div>
+
+
                                 </div>
                             </div>
                         </div>
@@ -117,27 +127,27 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-md-2">&nbsp;</div>
-                                <div class="col-md-2">Emergency Contact Firstname:</div>
+                                <div class="col-md-2">Firstname:</div>
                                 <div class="col-md-2">{{ $athlete->emergency_contact_firstname }}</div>
                             </div>
                             <div class="row">
                                 <div class="col-md-2">&nbsp;</div>
-                                <div class="col-md-2">Emergency Contact Surname:</div>
+                                <div class="col-md-2">Surname:</div>
                                 <div class="col-md-2">{{ $athlete->emergency_contact_surname }}</div>
                             </div>
                             <div class="row">
                                 <div class="col-md-2">&nbsp;</div>
-                                <div class="col-md-2">Emergency Contact Relationship:</div>
+                                <div class="col-md-2">Relationship:</div>
                                 <div class="col-md-2">{{ $athlete->emergency_contact_relationship }}</div>
                             </div>
                             <div class="row">
                                 <div class="col-md-2">&nbsp;</div>
-                                <div class="col-md-2">Telephone Number 3:</div>
+                                <div class="col-md-3">Telephone Number 3:</div>
                                 <div class="col-md-2">{{ $athlete->telephone_number_3 }}</div>
                             </div>
                             <div class="row">
                                 <div class="col-md-2">&nbsp;</div>
-                                <div class="col-md-2">Telepbhone Number 4:</div>
+                                <div class="col-md-3">Telephone Number 4:</div>
                                 <div class="col-md-2">{{ $athlete->telephone_number_4 }}</div>
                             </div>
                         </div>
@@ -156,12 +166,20 @@
                                 <div class="row">
                                     <div class="col-md-2">&nbsp;</div>
                                     <div class="col-md-2">Fees Paid:</div>
-                                    <div class="col-md-2">{{ $athlete->fees_paid }}</div>
+                                    @if ($athlete->fees_paid == 1)
+                                    <div class="col-md-2">Yes -- {{$athlete->fees_paid}}</div>
+                                    @else
+                                    <div class="col-md-2">No</div>
+                                    @endif
                                 </div>
                                 <div class="row">
                                     <div class="col-md-2">&nbsp;</div>
                                     <div class="col-md-2">Photo Consent:</div>
-                                    <div class="col-md-2">{{ $athlete->photo_consent }}</div>
+                                    @if ($athlete->photo_consent == 1)
+                                    <div class="col-md-2">Yes -- {{$athlete->photo_consent}}</div>
+                                    @else
+                                    <div class="col-md-2">No</div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -179,12 +197,20 @@
                                 <div class="row">
                                     <div class="col-md-2">&nbsp;</div>
                                     <div class="col-md-2">Medical Consent 1:</div>
-                                    <div class="col-md-2">{{ $athlete->medical_consent_1 }}</div>
+                                    @if ($athlete->medical_consent_1 == 1)
+                                    <div class="col-md-2">Yes -- {{ $athlete->medical_consent_1 }}</div>
+                                    @else
+                                    <div class="col-md-2">No</div>
+                                    @endif
                                 </div>
                                 <div class="row">
                                     <div class="col-md-2">&nbsp;</div>
                                     <div class="col-md-2">Medical Consent 2:</div>
-                                    <div class="col-md-2">{{ $athlete->medical_consent_2 }}</div>
+                                    @if ($athlete->medical_consent_2 == 1)
+                                    <div class="col-md-2">Yes -- {{$athlete->medical_consent_2}}</div>
+                                    @else
+                                    <div class="col-md-2">No</div>
+                                    @endif
                                 </div>
                             </div>
 
@@ -192,7 +218,11 @@
                         <div class="row">
                             <div class="col-md-2">&nbsp;</div>
                             <div class="col-md-2">Parent Signed:</div>
-                            <div class="col-md-2">{{ $athlete->signed }}</div>
+                            @if ($athlete->parent_signed == 1)
+                            <div class="col-md-2">Yes</div>
+                            @else
+                            <div class="col-md-2">No -- {{$athlete->parent_signed}}</div>
+                            @endif
                         </div>
                         <hr>
                     </div>

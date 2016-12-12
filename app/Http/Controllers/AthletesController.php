@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Athlete;
 use Session;
+use Illuminate\Support\Facades\Log;
+use Gate;
 
 class AthletesController extends Controller {
 
@@ -14,10 +16,11 @@ class AthletesController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        //return view('athletes.index');
-        $athletes = Athlete::all();
+        if (Gate::allows('athletes-get')) {
+            $athletes = Athlete::all();
 
-        return view('athletes.index')->withAthletes($athletes);
+            return view('athletes.index')->withAthletes($athletes);
+        }
     }
 
     /**
@@ -26,7 +29,8 @@ class AthletesController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        return view('athletes.create');
+        $athlete = new Athlete();
+        return view('athletes.create')->withAthlete($athlete);
     }
 
     /**
@@ -52,6 +56,7 @@ class AthletesController extends Controller {
             'emergency_contact_surname' => 'required',
             'emergency_contact_relationship' => 'required',
             'membership_type' => 'required'
+            
         ]);
 
         $input = $request->all();
@@ -70,7 +75,7 @@ class AthletesController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
-        
+
         $athlete = Athlete::findOrFail($id);
         return view('athletes.show')->withAthlete($athlete);
     }
@@ -82,7 +87,7 @@ class AthletesController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
-        
+
         $athlete = Athlete::findOrFail($id);
         return view('athletes.edit')->withAthlete($athlete);
     }
@@ -95,9 +100,7 @@ class AthletesController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
-        
-        
-        
+
         $this->validate($request, [
             'firstname' => 'required',
             'surname' => 'required',
@@ -116,11 +119,12 @@ class AthletesController extends Controller {
             'membership_type' => 'required'
         ]);
 
+        $athlete = Athlete::findOrFail($id);
         $input = $request->all();
 
-        Athlete::create($input);
+        $athlete->fill($input)->save();
 
-        Session::flash('flash_message', 'Athlete successfully added!');
+        Session::flash('flash_message', 'Athlete successfully updated!');
 
         return redirect()->back();
     }
@@ -133,6 +137,10 @@ class AthletesController extends Controller {
      */
     public function destroy($id) {
         //
+        Log::info("The ID to be destroyed: " . $id);
+        Athlete::destroy($id);
+        Session::flash('flash_message', 'Athlete successfully deleted!');
+        return redirect()->back();
     }
 
 }

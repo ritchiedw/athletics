@@ -124,28 +124,48 @@
 
             <div class="form-group">
                 {!! Form::label('fees_paid', 'Fees Paid:', ['class' => 'control-label']) !!}
-                {!! Form::checkbox('fees_paid', true, null) !!}
+                @if ($athlete->fees_paid == 1)
+                    {!! Form::checkbox('fees_paid', true, true) !!}
+                @else
+                    {!! Form::checkbox('fees_paid', true, null) !!}
+                 @endif
             </div>
 
             <div class="form-group">
                 {!! Form::label('photo_consent', 'Photo Consent:', ['class' => 'control-label']) !!}
-                {!! Form::checkbox('photo_consent', "true", null) !!}
+                @if ($athlete->photo_consent == 1)
+                    {!! Form::checkbox('photo_consent', true, true) !!}
+                @else
+                    {!! Form::checkbox('photo_consent', true, null) !!}
+                 @endif
             </div>
 
             <div class="form-group">
                 {!! Form::label('medical_consent_1', 'Medical Consent 1:', ['class' => 'control-label']) !!}
-                {!! Form::checkbox('medical_consent_1', true, null) !!}
+                @if ($athlete->medical_consent_1 == 1)
+                    {!! Form::checkbox('medical_consent_1', true, true) !!}
+                @else
+                    {!! Form::checkbox('medical_consent_1', true, null) !!}
+                 @endif
 
             </div>
 
             <div class="form-group">
                 {!! Form::label('medical_consent_2', 'Medical Consent 2:', ['class' => 'control-label']) !!}
-                {!! Form::checkbox('medical_consent_2', "true", null) !!}
+                @if ($athlete->medical_consent_2 == 1)
+                    {!! Form::checkbox('medical_consent_2', true, true) !!}
+                @else
+                    {!! Form::checkbox('medical_consent_2', true, null) !!}
+                 @endif
             </div>
 
             <div class="form-group">
                 {!! Form::label('signed', 'Signed:', ['class' => 'control-label']) !!}
-                {!! Form::checkbox('signed', "true", null) !!}
+                @if ($athlete->signed == 1)
+                    {!! Form::checkbox('signed', true, true) !!}
+                @else
+                    {!! Form::checkbox('signed', true, null) !!}
+                 @endif
             </div>
 
             <div class="form-group">

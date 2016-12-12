@@ -25,6 +25,12 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('athletes-get', function ($user) {
+            if(isset($user->id)) {
+                return true;
+            }
+            return false;
+            //return $user->id == $post->user_id;
+        });
     }
 }

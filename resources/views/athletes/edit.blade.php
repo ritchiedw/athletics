@@ -7,8 +7,8 @@
         <div class="col-md-2">&nbsp;</div>
         <div class="col-md-8">
             <h1>Edit Athlete {{ $athlete->firstname }} {{ $athlete->surname }}</h1>
-            <p class="lead">Edit this athlete below. <a href="{{ route('athletes.index') }}">Go back to all athletes.</a></p>
         </div>
+        <div class="col-md-2"><a href="{{ route('athletes.index') }}" class="btn btn-info">Back to all athletes</a></div>
     </div>
 </div>
 
@@ -19,7 +19,7 @@
 
         @include('forms.athlete')
 
-        {!! Form::submit('Update Task', ['class' => 'btn btn-primary']) !!}
+        {!! Form::submit('Update Athlete', ['class' => 'btn btn-primary']) !!}
 
         {!! Form::close() !!}
 
