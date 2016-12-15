@@ -10,17 +10,28 @@ use Gate;
 
 class AthletesController extends Controller {
 
+    private function authUser() {
+        if (!Gate::allows('athletes-get')) {
+            return view('auth.login');
+        }
+
+        return true;
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        if (Gate::allows('athletes-get')) {
-            $athletes = Athlete::all();
 
-            return view('athletes.index')->withAthletes($athletes);
+        if (!Gate::allows('athletes-get')) {
+            return view('auth.login');
         }
+
+        $athletes = Athlete::all();
+
+        return view('athletes.index')->withAthletes($athletes);
     }
 
     /**
@@ -29,6 +40,11 @@ class AthletesController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
+
+        if (!Gate::allows('athletes-get')) {
+            return view('auth.login');
+        }
+
         $athlete = new Athlete();
         return view('athletes.create')->withAthlete($athlete);
     }
@@ -40,6 +56,11 @@ class AthletesController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
+
+        if (!Gate::allows('athletes-get')) {
+            return view('auth.login');
+        }
+
         $this->validate($request, [
             'firstname' => 'required',
             'surname' => 'required',
@@ -56,7 +77,6 @@ class AthletesController extends Controller {
             'emergency_contact_surname' => 'required',
             'emergency_contact_relationship' => 'required',
             'membership_type' => 'required'
-            
         ]);
 
         $input = $request->all();
@@ -76,6 +96,10 @@ class AthletesController extends Controller {
      */
     public function show($id) {
 
+        if (!Gate::allows('athletes-get')) {
+            return view('auth.login');
+        }
+
         $athlete = Athlete::findOrFail($id);
         return view('athletes.show')->withAthlete($athlete);
     }
@@ -88,6 +112,9 @@ class AthletesController extends Controller {
      */
     public function edit($id) {
 
+        if (!Gate::allows('athletes-get')) {
+            return view('auth.login');
+        }
         $athlete = Athlete::findOrFail($id);
         return view('athletes.edit')->withAthlete($athlete);
     }
@@ -100,7 +127,10 @@ class AthletesController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
-
+        if (!Gate::allows('athletes-get')) {
+            return view('auth.login');
+        }
+        
         $this->validate($request, [
             'firstname' => 'required',
             'surname' => 'required',
@@ -137,6 +167,9 @@ class AthletesController extends Controller {
      */
     public function destroy($id) {
         //
+        if (!Gate::allows('athletes-get')) {
+            return view('auth.login');
+        }
         Log::info("The ID to be destroyed: " . $id);
         Athlete::destroy($id);
         Session::flash('flash_message', 'Athlete successfully deleted!');
